@@ -1,0 +1,22 @@
+{
+  "name": "prisch-tine",
+  "version": "1.0.0",
+  "description": "Project Two",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RichardTaing/Prisch-tine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RichardTaing/Prisch-tine/issues"
+  },
+  "homepage": "https://github.com/RichardTaing/Prisch-tine#readme",
+  "dependencies": {
+    "eslint": "^6.4.0"
+  }
+}
