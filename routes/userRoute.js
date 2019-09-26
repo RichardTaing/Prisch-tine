@@ -5,18 +5,19 @@ var validate = require("../models/user").validate;
 var express = require("express");
 var router = express.Router();
 
-router.get("/current", auth, async (req, res) {
-  var user = await User.findById(req.user._id).select("-password");
+router.get("/current", function (req, res) {
+  var user = User.findById(req.user._id).select("-password");
   res.send(user);
 });
 
-router.post("/", async (req, res) => {
+router.post("/", function (req, res) {
   // validate the request body first
-  var { error } = validate(req.body);
+  var _validate = validate(req.body);
+  
   if (error) return res.status(400).send(error.details[0].message);
 
   //find an existing user
-  let user = await User.findOne({ email: req.body.email });
+  var user =  User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("User already registered.");
 
   user = new User({
