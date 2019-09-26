@@ -1,5 +1,5 @@
 var db = require("../models");
-
+console.log(db);
 // module.exports = function(app) {
 //   // Get all examples
 //   app.get("/api/examples", function(req, res) {

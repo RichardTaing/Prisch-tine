@@ -1,10 +1,11 @@
 var auth = require("server");
 var bcrypt = require("bcrypt");
-var { User, validate } = require("../models/user");
+var User = require("../models/user").User;
+var validate = require("../models/user").validate;
 var express = require("express");
 var router = express.Router();
 
-router.get("/current", auth, async (req, res) => {
+router.get("/current", auth, async  (req, res) => {
   var user = await User.findById(req.user._id).select("-password");
   res.send(user);
 });

@@ -1,4 +1,5 @@
 var db = require("../models");
+console.log(db);
 var path = require("path");
 
 module.exports = function(app) {
