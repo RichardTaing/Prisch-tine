@@ -1,10 +1,10 @@
-const config = require("config");
-const jwt = require("jsonwebtoken");
-const Joi = require("@hapi/joi");
-const mysql = require("mysql");
+var config = require("config");
+var jwt = require("jsonwebtoken");
+var Joi = require("@hapi/joi");
+var mysql = require("mysql");
 
 //simple schema
-const UserSchema = new mysql.Schema({
+var UserSchema = new mysql.Schema({
   name: {
     type: String,
     required: true,
@@ -30,18 +30,18 @@ const UserSchema = new mysql.Schema({
 
 //custom method to generate authToken
 UserSchema.methods.generateAuthToken = function() {
-  const token = jwt.sign(
+  var token = jwt.sign(
     { _id: this._id, isAdmin: this.isAdmin },
     config.get("myprivatekey")
   ); //get the private key from the config file -> environment variable
   return token;
 };
 
-const User = mysql.model("User", UserSchema);
+var User = mysql.model("User", UserSchema);
 
 //function to validate user
 function validateUser(user) {
-  const schema = {
+  var schema = {
     name: Joi.string()
       .min(3)
       .max(50)

@@ -1,3 +1,3 @@
-{
-    "myprivatekey": "myprivatekey"
-   }
+module.exports = {
+  myprivatekey: "myprivatekey"
+};

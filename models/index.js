@@ -41,11 +41,11 @@ db.Sequelize = Sequelize;
 
 module.exports = db;
 
-const config = require("config");
-const mongoose = require("mongoose");
-const usersRoute = require("./routes/user.route");
-const express = require("express");
-const app = express();
+var config = require("config");
+var mongoose = require("mongoose");
+var usersRoute = require("./routes/user.route");
+var express = require("express");
+var app = express();
 
 //use config module to get the privatekey, if no private key set, end the application
 if (!config.get("myprivatekey")) {
@@ -63,5 +63,5 @@ app.use(express.json());
 //use users route for api/users
 app.use("/api/users", usersRoute);
 
-const port = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
