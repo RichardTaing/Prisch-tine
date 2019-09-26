@@ -5,12 +5,12 @@ var validate = require("../models/user").validate;
 var express = require("express");
 var router = express.Router();
 
-router.get("/current", function(req, res, next) {
-  var user = new User.findById(req.user._id).select("-password");
+router.get("/current", auth, async (req, res) {
+  var user = await User.findById(req.user._id).select("-password");
   res.send(user);
 });
 
-router.post("/", function (req, res, next) {
+router.post("/", async (req, res) => {
   // validate the request body first
   var { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
